@@ -6,7 +6,7 @@ class Mohan{
         System.out.println("the quick brown fox jumps over the lazy dog - 5");
     }
     int a = 10;
-    int b = 20;
+    private int b = 20;
     void add(){
         System.out.println(a + b + a * a * b - a);
     }
@@ -22,5 +22,6 @@ public class JavaFirstProgram {
         moh.fun();
         moh.fun1();
         moh.add();
+//        System.out.println(moh.b);  due to private access in mohan class that's why it is show error
     }
 }
