@@ -5,6 +5,11 @@ class Mohan{
     void fun(){
         System.out.println("the quick brown fox jumps over the lazy dog - 5");
     }
+    int a = 10;
+    int b = 20;
+    void add(){
+        System.out.println(a + b + a * a * b - a);
+    }
 }
 public class JavaFirstProgram {
     public static void main(String[] args) {
@@ -16,5 +21,6 @@ public class JavaFirstProgram {
         Mohan moh = new Mohan();
         moh.fun();
         moh.fun1();
+        moh.add();
     }
 }
