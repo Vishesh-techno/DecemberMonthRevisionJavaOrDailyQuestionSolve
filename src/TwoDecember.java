@@ -3,20 +3,21 @@ public class TwoDecember {
         int max = 0;
         int min = Integer.MAX_VALUE;
 
-        for(int i=0; i<prices.length; i++){
-            if(prices[i] < min){
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < min) {
                 min = prices[i];
             }
 
-            if(prices[i] - min > max){
+            if (prices[i] - min > max) {
                 max = prices[i] - min;
             }
         }
         return max;
     }
+
     public static void main(String[] args) {
-        int[] share = {7,1,5,3,6,4};
+        int[] share = {7, 1, 5, 3, 6, 4};
         int result = maxProfit(share);
-        System.out.println("The Maximum profit of buying and selling a stock is: "+result);
+        System.out.println("The Maximum profit of buying and selling a stock is: " + result);
     }
 }
