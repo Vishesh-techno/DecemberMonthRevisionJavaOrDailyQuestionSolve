@@ -16,21 +16,22 @@ public class ThreeDecember {
 
         // 2nd Method Optimized
 
-         Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
-         for(int i=0; i<nums.length; i++){
-             int RequiredNo = target - nums[i];
+        for (int i = 0; i < nums.length; i++) {
+            int RequiredNo = target - nums[i];
 
-             if(map.containsKey(RequiredNo)){
-                 return new int[]{i, map.get(RequiredNo)};
-             }
+            if (map.containsKey(RequiredNo)) {
+                return new int[]{i, map.get(RequiredNo)};
+            }
 
-             map.put(nums[i] , i);
-         }
-         return null;
+            map.put(nums[i], i);
+        }
+        return null;
     }
+
     public static void main(String[] args) {
-        int[] nums = {2,7,11,15};
+        int[] nums = {2, 7, 11, 15};
         System.out.println(Arrays.toString(twoSum(nums, 15)));
     }
 }
