@@ -1,21 +1,25 @@
-abstract class Animal{
+abstract class Animal {
     abstract void sound();
-    void sleep(){
+
+    void sleep() {
         System.out.println("Animal is sleeping...");
     }
 }
-class Dog extends Animal{
+
+class Dog extends Animal {
     @Override
     void sound() {
         System.out.println("Dog Barks");
     }
 }
-class Cat extends Animal{
+
+class Cat extends Animal {
     @Override
     void sound() {
         System.out.println("Cat meows");
     }
 }
+
 public class SevenDecember {
     public static void main(String[] args) {
         Animal a1 = new Dog();
