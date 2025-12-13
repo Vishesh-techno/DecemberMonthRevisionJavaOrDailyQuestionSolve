@@ -32,16 +32,16 @@ public class TwelveDecember {
         int profit = 0;
 
         for (int i = 0; i < prices.length - 1; i++) {
-            if (prices[i + 1] > prices[i]) {
-                int currProfit = prices[i + 1] - prices[i];
-                profit = profit + currProfit;
-            }
+//            if (prices[i + 1] > prices[i]) {
+//                int currProfit = prices[i + 1] - prices[i];
+//                profit = profit + currProfit;
+//            }
 
 //         2nd Method
-//         int diff = prices[i+1] - prices[i];
-//         if(diff > 0){
-//             profit = profit + diff;
-//         }
+         int diff = prices[i+1] - prices[i];
+         if(diff > 0){
+             profit = profit + diff;
+         }
         }
         return profit;
     }
