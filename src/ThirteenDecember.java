@@ -51,9 +51,9 @@ public class ThirteenDecember {
     public static void main(String[] args) {
         int[] nums = {5, 6, 7, 1, 2, 3, 4};
         int[] nums1 = {5, 6, 7, 1, 2, 3, 4, 5, 6};
-        int[] nums2 = {1,1,5,5,2,2,6,8,8};
+        int[] nums2 = {1, 1, 5, 5, 2, 2, 6, 8, 8};
         int k = 4;
-        System.out.println("The Original A      rray is: " + Arrays.toString(nums));
+        System.out.println("The Original Array is: " + Arrays.toString(nums));
         rotateArray(nums, k);
         System.out.println("The Rotated Array is: " + Arrays.toString(nums) + " by " + k + " Steps");
 
