@@ -105,6 +105,21 @@ public class FourteenDecember {
         }
     }
 
+    public static int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int requiredNo;
+        for (int i = 0; i < nums.length; i++) {
+            requiredNo = target - nums[i];
+
+            if (map.containsKey(requiredNo)) {
+                return new int[]{i, map.get(requiredNo)};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
     public static void main(String[] args) {
         int[] nums1 = {1, 2, 2, 1, 7, 9};
         int[] nums2 = {1, 2, 2, 7, 9};
@@ -123,5 +138,7 @@ public class FourteenDecember {
         moveZeros(nums3);
 
         System.out.println(Arrays.toString(nums3));
+
+        System.out.println(Arrays.toString(twoSum(nums1, 9)));
     }
 }
