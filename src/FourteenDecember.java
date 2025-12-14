@@ -120,11 +120,24 @@ public class FourteenDecember {
         return new int[]{-1, -1};
     }
 
+    public static int findMaxConsecutiveOnes(int[] nums) {
+        int count = 0, max = 0;
+        for (int num : nums) {
+            if (num == 1) {
+                count++;
+            } else {
+                max = Math.max(count, max);
+                count = 0;
+            }
+        }
+        return Math.max(count, max);
+    }
+
     public static void main(String[] args) {
         int[] nums1 = {1, 2, 2, 1, 7, 9};
         int[] nums2 = {1, 2, 2, 7, 9};
         int[] nums3 = {0, 2, 0, 0, 9, 7, 2, 8};
-
+        int[] nums4 = {1, 1, 1, 1, 2, 5, 1, 1, 11, 1, 1, 1, 1, 1, 1, 11, 1, 1, 1, 1, 11, 1, 1, 1, 1, 1};
         int[] k = intersection(nums1, nums2);
 
         System.out.println(Arrays.toString(intersection(nums1, nums2)));
@@ -140,5 +153,7 @@ public class FourteenDecember {
         System.out.println(Arrays.toString(nums3));
 
         System.out.println(Arrays.toString(twoSum(nums1, 9)));
+
+        System.out.println(findMaxConsecutiveOnes(nums4));
     }
 }
