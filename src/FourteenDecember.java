@@ -76,9 +76,39 @@ public class FourteenDecember {
         return arr;
     }
 
+    public static int[] plusOne(int[] digits) {
+        int[] answer = new int[digits.length + 1];
+        answer[0] = 1;
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] == 9) {
+                digits[i] = 0;
+            } else {
+                digits[i] += 1;
+                return digits;
+            }
+        }
+        return answer;
+    }
+
+    public static void moveZeros(int[] nums) {
+        int k = 0;
+
+        for (int num : nums) {
+            if (num != 0) {
+                nums[k] = num;
+                k++;
+            }
+        }
+        while (k < nums.length) {
+            nums[k] = 0;
+            k++;
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums1 = {1, 2, 2, 1, 7, 9};
         int[] nums2 = {1, 2, 2, 7, 9};
+        int[] nums3 = {0, 2, 0, 0, 9, 7, 2, 8};
 
         int[] k = intersection(nums1, nums2);
 
@@ -88,5 +118,10 @@ public class FourteenDecember {
 
         System.out.println(Arrays.toString(intersectionII(nums1, nums2)));
 
+        System.out.println(Arrays.toString(plusOne(nums2)));
+
+        moveZeros(nums3);
+
+        System.out.println(Arrays.toString(nums3));
     }
 }
