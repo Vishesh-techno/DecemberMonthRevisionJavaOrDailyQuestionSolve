@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class FourteenDecember {
     public static int[] intersection(int[] nums1, int[] nums2) {
@@ -30,23 +28,52 @@ public class FourteenDecember {
     }
 
     public static int[] intersectionII(int[] nums1, int[] nums2) {
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        int i = 0, j = 0, k = 0;
-        int[] res = new int[Math.min(nums1.length, nums2.length)];
-        while (i < nums1.length && j < nums2.length) {
-            if (nums1[i] == nums2[j]) {
-                res[k] = nums1[i];
-                k++;
-                i++;
-                j++;
-            } else if (nums1[i] > nums2[j]) {
-                j++;
+//        Arrays.sort(nums1);
+//        Arrays.sort(nums2);
+//        int i = 0, j = 0, k = 0;
+//        int[] res = new int[Math.min(nums1.length, nums2.length)];
+//        while (i < nums1.length && j < nums2.length) {
+//            if (nums1[i] == nums2[j]) {
+//                res[k] = nums1[i];
+//                k++;
+//                i++;
+//                j++;
+//            } else if (nums1[i] > nums2[j]) {
+//                j++;
+//            } else {
+//                i++;
+//            }
+//        }
+//        return Arrays.copyOfRange(res, 0, k);
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int num : nums1) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
             } else {
-                i++;
+                map.put(num, 1);
             }
         }
-        return Arrays.copyOfRange(res, 0, k);
+
+        for (int num : nums2) {
+            if (map.containsKey(num)) {
+                if (map.get(num) == 1) {
+                    map.remove(num);
+                } else {
+                    map.put(num, map.get(num) - 1);
+                }
+                list.add(num);
+            }
+        }
+        int[] arr = new int[list.size()];
+        int counter = 0;
+        for (int j : list) {
+            arr[counter] = j;
+            counter++;
+        }
+        return arr;
     }
 
     public static void main(String[] args) {
