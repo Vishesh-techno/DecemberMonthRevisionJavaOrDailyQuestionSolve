@@ -37,9 +37,25 @@ public class SeventeenDecember {
         return idx;
     }
 
+    public static void reverseString(char[] s) {
+        int start = 0, end = s.length - 1;
+
+        while (start < end) {
+            char ch = s[start];
+            s[start] = s[end];
+            s[end] = ch;
+
+            start++;
+            end--;
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = {1, 7, 3, 6, 5, 6};
+        char[] ch = {'h','e','l','l','o'};
         System.out.println(findPivotIndex(nums));
         System.out.println(dominantIndex(nums));
+        reverseString(ch);
+        System.out.println(ch);
     }
 }
