@@ -48,11 +48,12 @@ public class SeventeenDecember {
             start++;
             end--;
         }
+
     }
 
     public static void main(String[] args) {
         int[] nums = {1, 7, 3, 6, 5, 6};
-        char[] ch = {'h','e','l','l','o'};
+        char[] ch = {'h', 'e', 'l', 'l', 'o'};
         System.out.println(findPivotIndex(nums));
         System.out.println(dominantIndex(nums));
         reverseString(ch);
