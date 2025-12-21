@@ -42,6 +42,33 @@ public class TwentyOneDecember {
         System.out.println("null");
     }
 
+    public static ListNode removeNthNodeFromEnd(ListNode head, int n) {
+        if (head == null) {
+            return null;
+        }
+        int sz = 0;
+        ListNode temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        }
+        if (sz < n) {
+            return head;
+        }
+        if (sz == n) {
+            return head.next;
+        }
+        int i = 0;
+        int j = sz - n;
+        ListNode prev = head;
+        while (i < j - 1) {
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return head;
+    }
+
     public static void main(String[] args) {
         addNode(new ListNode(10));
         addNode(new ListNode(20));
