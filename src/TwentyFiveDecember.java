@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class TwentyFiveDecember {
 //    Merry Christmas
 
@@ -111,11 +114,74 @@ public class TwentyFiveDecember {
             }
             System.out.println("null");
         }
+
+        public static boolean isPalindrome(LinkedList head) {
+            if (head == null) {
+                return true;
+            }
+
+            LinkedList slow = head;
+            LinkedList fast = head;
+
+            while (fast != null && fast.next != null) {
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+
+            LinkedList prev = null;
+            LinkedList curr = slow;
+            LinkedList next;
+            while (curr != null) {
+                next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+            }
+
+            LinkedList left = head;
+            LinkedList right = prev;
+
+            while (left != null && right != null) {
+                if (left.val != right.val) {
+                    return false;
+                }
+                left = left.next;
+                right = right.next;
+            }
+            return true;
+        }
+
+        public boolean isCycle(LinkedList head) {
+            Set<LinkedList> set = new HashSet<>();
+            LinkedList curr = head;
+
+            while (curr != null) {
+                if (set.contains(curr)) {
+                    return true;
+                }
+                set.add(curr);
+                curr = curr.next;
+            }
+            return false;
+        }
+
+        public boolean isCycleII(LinkedList head) {
+            LinkedList slow = head;
+            LinkedList fast = head;
+
+            while (fast != null && fast.next != null) {
+                slow = slow.next;
+                fast = fast.next.next;
+
+                if (fast == slow) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
-
     public static void main(String[] args) {
-
         LinkedList ll = new LinkedList();
         ll.add(10);
         ll.add(20);
@@ -158,6 +224,25 @@ public class TwentyFiveDecember {
 
         System.out.print("Merged List: ");
         LinkedList.printList(mergedHead);
+
+//        LinkedList.isPalindrome(mergedHead);
+        if (LinkedList.isPalindrome(mergedHead)) {
+            System.out.println("The Linked List is Palindrome");
+        } else {
+            System.out.println("The Linked List is not a Palindrome");
+        }
+
+        if (ll.isCycle(mergedHead)) {
+            System.out.println("The Linked List is Cyclic");
+        } else {
+            System.out.println("The Linked List is not a Cyclic");
+        }
+
+        if (ll.isCycleII(mergedHead)) {
+            System.out.println("The Linked List is Cyclic");
+        } else {
+            System.out.println("The Linked List is not a Cyclic");
+        }
 
     }
 }
