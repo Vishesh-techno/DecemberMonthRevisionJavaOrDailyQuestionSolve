@@ -2,7 +2,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TwentyFiveDecember {
-//    Merry Christmas
 
     static class LinkedList {
         int val;
@@ -182,6 +181,7 @@ public class TwentyFiveDecember {
     }
 
     public static void main(String[] args) {
+        System.out.println("Merry Christmas!!");
         LinkedList ll = new LinkedList();
         ll.add(10);
         ll.add(20);
