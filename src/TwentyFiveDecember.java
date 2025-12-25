@@ -4,80 +4,161 @@ public class TwentyFiveDecember {
     static class LinkedList {
         int val;
         LinkedList next;
+        LinkedList head;
+
+        LinkedList() {
+        }
 
         LinkedList(int val) {
             this.val = val;
             this.next = null;
         }
 
-        LinkedList() {
 
+//    public static LinkedList head;
+
+        public void add(int value) {
+            LinkedList newNode = new LinkedList(value);
+
+            if (head == null) {
+                head = newNode;
+                return;
+            }
+
+            LinkedList temp = head;
+
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+
+            temp.next = newNode;
         }
-    }
 
-    public static LinkedList head;
+//    public static void addNode(LinkedList newNode) {
+//        if (head == null) {
+//            head = newNode;
+//            return;
+//        }
+//
+//        LinkedList temp = head;
+//
+//        while (temp.next != null) {
+//            temp = temp.next;
+//        }
+//
+//        temp.next = newNode;
+//    }
 
-    public static void addNode(LinkedList newNode) {
-        if (head == null) {
-            head = newNode;
-            return;
+        public void print() {
+//        if (head == null) {
+//            return;
+//        }
+            LinkedList temp = head;
+
+            while (temp != null) {
+                System.out.print(temp.val + "==>");
+                temp = temp.next;
+            }
+            System.out.println("null");
         }
 
-        LinkedList temp = head;
+        public void reverseList() {
+            LinkedList prev = null;
+            LinkedList curr = head;
+            LinkedList next;
 
-        while (temp.next != null) {
-            temp = temp.next;
+            while (curr != null) {
+                next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+            }
+//        return prev;
+            head = prev;
         }
 
-        temp.next = newNode;
-    }
+        public static LinkedList mergeSortedList(LinkedList l1, LinkedList l2) {
+            LinkedList dummy = new LinkedList(0);
 
-    public static void print() {
-        if (head == null) {
-            return;
+            LinkedList curr = dummy;
+
+            LinkedList list1 = l1.head;
+            LinkedList list2 = l2.head;
+
+            while (list1 != null && list2 != null) {
+                if (list1.val < list2.val) {
+                    curr.next = list1;
+                    curr = list1;
+                    list1 = list1.next;
+                } else {
+                    curr.next = list2;
+                    curr = list2;
+                    list2 = list2.next;
+                }
+            }
+            if (list1 == null) {
+                curr.next = list2;
+            } else {
+                curr.next = list1;
+            }
+            return dummy.next;
         }
-        LinkedList temp = head;
 
-        while (temp != null) {
-            System.out.print(temp.val + "==>");
-            temp = temp.next;
+        public static void printList(LinkedList node) {
+            while (node != null) {
+                System.out.print(node.val + "==>");
+                node = node.next;
+            }
+            System.out.println("null");
         }
-        System.out.println("null");
-    }
-
-    public static LinkedList reverseList(LinkedList head) {
-        LinkedList prev = null;
-        LinkedList curr = head;
-        LinkedList next;
-
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
     }
 
 
     public static void main(String[] args) {
-        addNode(new LinkedList(10));
-        addNode(new LinkedList(20));
-        addNode(new LinkedList(30));
-        addNode(new LinkedList(40));
-        addNode(new LinkedList(50));
-        addNode(new LinkedList(60));
-        addNode(new LinkedList(70));
-        addNode(new LinkedList(80));
-        addNode(new LinkedList(90));
-        addNode(new LinkedList(100));
-        addNode(new LinkedList(1000));
 
-        print();
+        LinkedList ll = new LinkedList();
+        ll.add(10);
+        ll.add(20);
+        ll.add(30);
+        ll.add(40);
+        ll.add(80);
+        ll.add(100);
 
-        head = reverseList(head);
+        LinkedList ll1 = new LinkedList();
+        ll1.add(101);
+        ll1.add(200);
+        ll1.add(201);
+        ll1.add(202);
+        ll1.add(203);
+        ll1.add(205);
 
-        print();
+        System.out.print("List-1:");
+        ll.print();
+
+        System.out.println();
+
+        System.out.print("List-2:");
+        ll1.print();
+
+        System.out.println();
+
+//        ll.reverseList();
+//        System.out.print("Reversed List-1:");
+//        ll.print();
+//
+//        System.out.println();
+//
+//        ll1.reverseList();
+//        System.out.print("Reversed List-2:");
+//        ll1.print();
+
+//        System.out.println();
+
+        LinkedList mergedHead = LinkedList.mergeSortedList(ll, ll1);
+
+        System.out.print("Merged List: ");
+        LinkedList.printList(mergedHead);
 
     }
 }
+
