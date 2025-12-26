@@ -15,7 +15,7 @@ public class TwentySixDecember {
 
     }
 
-    ListNode head;
+    static ListNode head;
     ListNode tail;
 
     public TwentySixDecember() {
@@ -126,6 +126,31 @@ public class TwentySixDecember {
         System.out.println("null");
     }
 
+    ListNode detectCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                break;
+            }
+        }
+
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+
+        slow = head;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
+
+
     public static void main(String[] args) {
         TwentySixDecember ll = new TwentySixDecember();
 
@@ -151,6 +176,12 @@ public class TwentySixDecember {
         ll.deleteAtIndex(1);
 
         ll.print();
+
+        if (ll.detectCycle(head) == null) {
+            System.out.println("Cycle not detected");
+        } else {
+            System.out.println(ll.detectCycle(head));
+        }
 
     }
 }
