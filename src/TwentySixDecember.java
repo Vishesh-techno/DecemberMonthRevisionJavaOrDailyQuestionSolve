@@ -1,14 +1,10 @@
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class TwentySixDecember {
     static class ListNode {
         int val;
         ListNode next;
-
-        ListNode() {
-        }
 
         public ListNode(int val) {
             this.val = val;
@@ -110,7 +106,7 @@ public class TwentySixDecember {
             temp = temp.next;
             i++;
         }
-        if (temp == null || temp.next == null) {
+        if (temp.next == null) {
             return;
         }
         if (temp.next.next == null) {
