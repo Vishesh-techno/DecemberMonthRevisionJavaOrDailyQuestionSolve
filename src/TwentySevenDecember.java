@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class TwentySevenDecember {
     static class ListNode {
         int val;
@@ -81,7 +83,33 @@ public class TwentySevenDecember {
             return head;
         }
 
+        ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            ListNode result = new ListNode(0);
+            ListNode ptr = result;
+            int carry = 0;
+            while (l1 != null || l2 != null) {
+                int sum = carry;
+                if (l1 != null) {
+                    sum = sum + l1.val;
+                    l1 = l1.next;
+                }
 
+                if (l2 != null) {
+                    sum = sum + l2.val;
+                    l2 = l2.next;
+                }
+
+                carry = sum / 10;
+                sum = sum % 10;
+
+                ptr.next = new ListNode(sum);
+                ptr = ptr.next;
+            }
+            if (carry == 1) {
+                ptr.next = new ListNode(1);
+            }
+            return result.next;
+        }
     }
 
     public static void main(String[] args) {
@@ -102,5 +130,31 @@ public class TwentySevenDecember {
 
         list.removeElements(list.head, 30);
         list.print();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nEnter number of nodes in first number list: ");
+        int a = sc.nextInt();
+        ListNode l1 = new ListNode(0);
+        System.out.println("Enter digits:");
+        for (int i = 0; i < a; i++) {
+            l1.addNode(sc.nextInt());
+        }
+
+        System.out.print("\nEnter number of nodes in second number list: ");
+        int b = sc.nextInt();
+        ListNode l2 = new ListNode(0);
+        System.out.println("Enter digits:");
+        for (int i = 0; i < b; i++) {
+            l2.addNode(sc.nextInt());
+        }
+
+        ListNode ans = list.addTwoNumbers(l1.head, l2.head);
+        System.out.print("Addition Result: ");
+        ListNode temp = ans;
+        while (temp != null) {
+            System.out.print(temp.val + "==>");
+            temp = temp.next;
+        }
+        System.out.println("null");
     }
 }
