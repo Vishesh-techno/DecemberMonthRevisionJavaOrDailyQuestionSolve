@@ -5,6 +5,7 @@ public class TwentySevenDecember {
         int val;
         ListNode next;
         ListNode head;
+        ListNode tail;
 
         ListNode(int val) {
             this.val = val;
@@ -110,6 +111,42 @@ public class TwentySevenDecember {
             }
             return result.next;
         }
+
+        ListNode rotateList(ListNode head, int k) {
+//            1️⃣ length निकालो
+//            2️⃣ k = k % length
+//            3️⃣ tail.next = head  (make circular)
+//            4️⃣ newTail = (length - k - 1) position पर जाओ
+//            5️⃣ newHead = newTail.next
+//            6️⃣ newTail.next = null
+//            7️⃣ return newHead
+
+            ListNode temp = head;
+            int sz = 1;
+            while (temp.next != null) {
+                sz++;
+                temp = temp.next;
+            }
+            ListNode tail = temp;
+
+            k = k % sz;
+            if (k == 0) {
+                return head;
+            }
+
+            tail.next = head;
+
+            ListNode newTail = head;
+            for (int i = 0; i < sz - k - 1; i++) {
+                newTail = newTail.next;
+            }
+
+            ListNode newHead = newTail.next;
+
+            newTail.next = null;
+
+            return newHead;
+        }
     }
 
     public static void main(String[] args) {
@@ -132,29 +169,32 @@ public class TwentySevenDecember {
         list.print();
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nEnter number of nodes in first number list: ");
-        int a = sc.nextInt();
-        ListNode l1 = new ListNode(0);
-        System.out.println("Enter digits:");
-        for (int i = 0; i < a; i++) {
-            l1.addNode(sc.nextInt());
-        }
+//        System.out.print("\nEnter number of nodes in first number list: ");
+//        int a = sc.nextInt();
+//        ListNode l1 = new ListNode(0);
+//        System.out.println("Enter digits:");
+//        for (int i = 0; i < a; i++) {
+//            l1.addNode(sc.nextInt());
+//        }
+//
+//        System.out.print("\nEnter number of nodes in second number list: ");
+//        int b = sc.nextInt();
+//        ListNode l2 = new ListNode(0);
+//        System.out.println("Enter digits:");
+//        for (int i = 0; i < b; i++) {
+//            l2.addNode(sc.nextInt());
+//        }
+//
+//        ListNode ans = list.addTwoNumbers(l1.head, l2.head);
+//        System.out.print("Addition Result: ");
+//        ListNode temp = ans;
+//        while (temp != null) {
+//            System.out.print(temp.val + "==>");
+//            temp = temp.next;
+//        }
+//        System.out.println("null");
 
-        System.out.print("\nEnter number of nodes in second number list: ");
-        int b = sc.nextInt();
-        ListNode l2 = new ListNode(0);
-        System.out.println("Enter digits:");
-        for (int i = 0; i < b; i++) {
-            l2.addNode(sc.nextInt());
-        }
-
-        ListNode ans = list.addTwoNumbers(l1.head, l2.head);
-        System.out.print("Addition Result: ");
-        ListNode temp = ans;
-        while (temp != null) {
-            System.out.print(temp.val + "==>");
-            temp = temp.next;
-        }
-        System.out.println("null");
+        list.head = list.rotateList(list.head, 7);
+        list.print();
     }
 }
