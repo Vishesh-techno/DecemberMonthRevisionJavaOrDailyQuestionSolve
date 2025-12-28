@@ -1,9 +1,34 @@
 public class TwentyEightDecember {
     public static void printArray(int[] arr) {
         for (int j : arr) {
-            System.out.print(j + " ");
+            System.out.print(j + "==>");
         }
         System.out.println("null");
+    }
+
+    public static void sortColors(int[] nums) {
+        int n = nums.length;
+//        for(int i=0; i<n-1; i++){
+//            for(int j=0; j<n-i-1; j++){
+//                if(nums[j] > nums[j+1]){
+//                    int temp = nums[j];
+//                    nums[j] = nums[j+1];
+//                    nums[j+1] = temp;
+//                }
+//            }
+//        }
+
+        for (int i = 0; i < n - 1; i++) {
+            int small = i;
+            for (int j = i + 1; j < n; j++) {
+                if (nums[small] > nums[j]) {
+                    small = j;
+                }
+            }
+            int temp = nums[small];
+            nums[small] = nums[i];
+            nums[i] = temp;
+        }
     }
 
     public static void main(String[] args) {
@@ -46,5 +71,9 @@ public class TwentyEightDecember {
             arr[j + 1] = curr;
         }
         printArray(arr);
+
+        int[] nums = {2, 0, 2, 1, 1, 0};
+        sortColors(nums);
+        printArray(nums);
     }
 }
